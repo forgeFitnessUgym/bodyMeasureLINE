@@ -45,8 +45,11 @@ async function 取得量測記錄(data) {
     
     var dataTemp=[];
     for (var i=0; i<所有量測數據.length; i++ ) {
+      var 時間Date = new Date(所有量測數據[i].量測時間);
+      var 時間Str  = 時間Date.toLocaleString();   
+      console.log("時間Str", 時間Str);
       var 卡片 = {
-        "量測記錄時間": 所有量測數據[i].量測時間,              
+        "量測記錄時間": 時間Str, //所有量測數據[i].量測時間,              
         "綜合評價":    所有量測數據[i].HealthScore,
         "量測紀錄圖片": 所有量測數據[i].PicUrl,              
         "url": "2-views/量測報告.html?PicUrl="+所有量測數據[i].PicUrl,
