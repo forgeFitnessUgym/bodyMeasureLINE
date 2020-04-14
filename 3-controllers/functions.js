@@ -336,7 +336,7 @@ async function checkUserIdExist() {
     }     
        
     refresh=true;
-    
+    measurementSource.read(); // 產生 sorting 
     $.loading.end();
     
 //    loadCourses = true;

@@ -8,7 +8,7 @@ var measurementSource = new kendo.data.DataSource({
     read: function (data) { 取得量測記錄(measurementSource); }
   },
   sort: {
-    field: "量測記錄時間",
+    field: "量測時間",
     dir: "desc"
   },
   requestStart: function () {
@@ -51,7 +51,8 @@ async function 取得量測記錄(data) {
       var 卡片 = {
         "量測記錄時間": 時間Str, //所有量測數據[i].量測時間,              
         "綜合評價":    所有量測數據[i].HealthScore,
-        "量測紀錄圖片": 所有量測數據[i].PicUrl,              
+        "量測紀錄圖片": 所有量測數據[i].PicUrl, 
+        "量測時間"   : 所有量測數據[i].量測時間,
         "url": "2-views/量測報告.html?PicUrl="+所有量測數據[i].PicUrl,
         "section": "A"             
       };

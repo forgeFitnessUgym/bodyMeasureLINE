@@ -299,6 +299,8 @@
         }
 
         measurementSource.success(dataTemp);
+        
+        measurementSource.read(); // 產生 sorting 
 
         if (dataTemp.length==0) {
           $("#量測記錄title").text("尚無量測記錄");
