@@ -155,7 +155,25 @@
           alert("為讓更多人使用，也是保障您的權益，距離上次量測須超過一小時，才能再度量測，謝謝您的合作。");
           return;
         }
-                
+         
+        // Check if Device is in use
+        paramToSend = "?API=31" + "&CustomerId=打鐵健身&StoreId="+$("#預設常用健身房").val();      
+        var res = await callAPI(paramToSend, '讀取機器狀態');
+        console.log(res);
+        var machineStatus = res.split(",");
+        var 目前機器狀態 = machineStatus[1];
+        var 機器更新時間 = machineStatus[2];
+        console.log(目前機器狀態, 機器更新時間);        
+        
+        if ((Date.now()- 機器更新時間) > 5*60*1000) {
+          alert("抱歉，此機器未連上雲端，請檢查機器是否有連上網路");
+          return;          
+        }
+        if (目前機器狀態 =="使用中"){
+          alert("抱歉，此機器已有人要求量測。請耐心等候");
+          return;
+        }
+        
         
         if (confirm("為了您的權益，請檢查是在打鐵健身 "+預設常用健身房+" 身體組成分析儀 序號:"+機器序號+"上進行量測。\n\n序號可在機器上查對")) { 
           $("#開始測量按鈕").attr("disabled", true);
@@ -177,7 +195,7 @@
           
 //          啟動模擬機();
 //          $("#loadingProgressBar").data("kendoProgressBar").value(1);
-          checkStatusInterval = setInterval( checkMeasurementStatus, 1000);      
+          checkStatusInterval = setInterval( checkMeasurementStatus, 5000);      
            
         } else {
           console.log("放棄測量");

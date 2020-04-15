@@ -303,7 +303,8 @@ async function checkUserIdExist() {
 
     paramToSend = "?API=31" + "&CustomerId=打鐵健身&StoreId="+$("#預設常用健身房").val();      
     var res = await callAPI(paramToSend, '讀取店面名稱');
-    機器序號 = res;
+    var machineStatus = res.split(",");
+    機器序號 = machineStatus[0];
     console.log(機器序號);    
     
     paramToSend = "?API=32" + "&UserId=" + $("#formUserPhone").val(); //userId[1];
