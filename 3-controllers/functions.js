@@ -510,3 +510,7 @@ function 我知道了(){
   $("#個人資料使用Div").show();  
   $("#個人資料同意書Div").hide();      
 }
+
+function testaaa(){
+  console.log("aaa");
+}

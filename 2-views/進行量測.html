@@ -184,7 +184,9 @@
           console.log("call API 送出要求測量");
                     
           $("#取消測量按鈕").attr("disabled", false);  
-          $("#取消測量按鈕").css("background-color", "red");           
+          $("#取消測量按鈕").css("background-color", "red");    
+          
+          $(".km-back").css("visibility", "hidden");
         
           paramToSend = "?API=20&UserId="+userId[1]+"&CustomerId=打鐵健身&StoreId="+預設常用健身房+"&PhoneNumber="+$("#formUserPhone").val();
           console.log(paramToSend);           
@@ -213,6 +215,8 @@
         console.log(取消量測回覆); 
         $("#測量訊息").text(取消量測回覆);
         
+        $(".km-back").css("visibility", "visible");
+      
         app.navigate("#:back");
       }
       
@@ -295,6 +299,7 @@
         
       async function 查看報告(){
         console.log("查看報告");
+        $(".km-back").css("visibility", "visible");
         app.navigate("#:back");
         
         paramToSend = paramToSend = "?API=32" + "&UserId=" + $("#formUserPhone").val(); //userId[1];
