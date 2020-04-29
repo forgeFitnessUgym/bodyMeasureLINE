@@ -290,10 +290,27 @@
             paramToSend = "?API=23&UserId="+userId[1]+"&CustomerId=打鐵健身&StoreId="+預設常用健身房;
             var res = await callAPI(paramToSend, ''); 
             console.log(res);
-            app.navigate("#:back");            
+            app.navigate("#:back");  
+            break;
+
+          case "機台已有人在使用":
+            clearInterval(checkStatusInterval);             
+            alert("機台已有人在使用"); 
+            paramToSend = "?API=23&UserId="+userId[1]+"&CustomerId=打鐵健身&StoreId="+預設常用健身房;
+            var res = await callAPI(paramToSend, ''); 
+            console.log(res);
+            app.navigate("#:back");       
+            break;            
+            
           default:
             console.log("未知量測狀態");
-            clearInterval(checkStatusInterval);           
+            clearInterval(checkStatusInterval);   
+            alert("未知量測狀態"); 
+            paramToSend = "?API=23&UserId="+userId[1]+"&CustomerId=打鐵健身&StoreId="+預設常用健身房;
+            var res = await callAPI(paramToSend, ''); 
+            console.log(res);
+            app.navigate("#:back");       
+            break;              
         }
       }
         
